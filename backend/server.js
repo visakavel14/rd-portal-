@@ -10,6 +10,14 @@ import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import jwt from "jsonwebtoken";
 import User from "./models/User.js";
 import { initGridFS } from "./config/gridfs.js";
+import authRoutes from "./routes/auth.js";
+import scholarRoutes from "./routes/scholars.js";
+import proposalRoutes from "./routes/proposals.js";
+import iprRoutes from "./routes/ipr.js";
+import publicationRoutes from "./routes/publication.js";
+import adminRoutes from "./routes/admin.js";
+import fileRoutes from "./routes/files.js";
+import userRoutes from "./routes/users.js";
 
 dotenv.config();
 
@@ -139,16 +147,6 @@ app.post('/auth/admin/login', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
-
-// Your existing routes
-import authRoutes from "./routes/auth.js";
-import scholarRoutes from "./routes/scholars.js";
-import proposalRoutes from "./routes/proposals.js";
-import iprRoutes from "./routes/ipr.js";
-import publicationRoutes from "./routes/publication.js";
-import adminRoutes from "./routes/admin.js";
-import fileRoutes from "./routes/files.js";
-import userRoutes from "./routes/users.js";
 
 app.use("/api/auth", authRoutes);
 app.use("/api/phdScholars", scholarRoutes);

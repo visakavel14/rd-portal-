@@ -25,7 +25,7 @@ const Login = () => {
   }, [user, navigate]);
 
   const handleStudentLogin = () => {
-    window.location.href = "http://localhost:5000/auth/google?hd=student.tce.edu";
+    window.location.href = "http://localhost:5000/auth/google";
   };
 
   const handleAdminLogin = async (e) => {

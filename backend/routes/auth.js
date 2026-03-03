@@ -10,14 +10,22 @@ const router = express.Router();
 router.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
 
-  if (!email.endsWith("@tce.edu")) {
-    return res.status(400).json({ message: "Use @tce.edu email" });
+  const normalizedEmail = (email || "").toLowerCase().trim();
+  const allowedDomains = ["@student.tce.edu", "@tce.edu"];
+  const isAllowedDomain = allowedDomains.some((domain) =>
+    normalizedEmail.endsWith(domain)
+  );
+
+  if (!isAllowedDomain) {
+    return res
+      .status(400)
+      .json({ message: "Use @student.tce.edu or @tce.edu email" });
   }
 
-  const exists = await User.findOne({ email });
+  const exists = await User.findOne({ email: normalizedEmail });
   if (exists) return res.status(400).json({ message: "User exists" });
 
-  await User.create({ username, email, password });
+  await User.create({ username, email: normalizedEmail, password });
   res.json({ message: "Registered successfully" });
 });
 

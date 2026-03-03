@@ -40,11 +40,13 @@ app.use(passport.initialize());
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: "/auth/google/callback",
-  hostedDomain: "student.tce.edu"
+  callbackURL: "/auth/google/callback"
 }, async (accessToken, refreshToken, profile, done) => {
   try {
-    if (!profile.emails[0]?.value?.endsWith('@student.tce.edu')) {
+    const email = profile.emails[0]?.value?.toLowerCase?.() || "";
+    const allowedDomains = ["@student.tce.edu", "@tce.edu"];
+    const isAllowedDomain = allowedDomains.some((domain) => email.endsWith(domain));
+    if (!isAllowedDomain) {
       return done(null, false);
     }
     let user = await User.findOne({ googleId: profile.id });

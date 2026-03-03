@@ -17,8 +17,8 @@ import UtilityForm from "./components/IPR/UtilityForm.jsx";
 import IPRList from "./components/IPR/IPRList.jsx";
 
 // PhD Scholars
-import ScholarForm from "./components/PhDScholars/ScholarForm.jsx";
-import ScholarList from "./components/PhDScholars/ScholarsList.jsx";
+import ScholarForm from "./components/PhdScholars/ScholarForm.jsx";
+import ScholarList from "./components/PhdScholars/ScholarsList.jsx";
 
 // Project Proposals
 import ProjectProposalForm from "./components/ProjectProposals/ProjectProposalForm.jsx";

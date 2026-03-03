@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const initAuth = async () => {
       try {
-        const sessionRes = await fetch('http://localhost:5000/auth/me', {
+        const sessionRes = await fetch('/auth/me', {
           credentials: 'include'
         });
         if (sessionRes.ok) {
@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const logout = () => {
-    fetch('http://localhost:5000/auth/logout', {
+    fetch('/auth/logout', {
       method: 'POST',
       credentials: 'include'
     }).catch(() => {});

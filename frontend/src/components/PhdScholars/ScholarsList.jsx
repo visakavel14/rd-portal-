@@ -215,7 +215,7 @@ const ScholarsList = () => {
                     <td>
                       {s.proofFileId ? (
                         <a
-                          href={`http://localhost:5000/api/files/${s.proofFileId}`}
+                          href={`/api/files/${s.proofFileId}`}
                           target="_blank"
                           rel="noreferrer"
                           style={{ display: "inline-flex", alignItems: "center", gap: "4px", color: "#1b2a44" }}

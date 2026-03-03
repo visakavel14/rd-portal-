@@ -25,7 +25,7 @@ const Login = () => {
   }, [user, navigate]);
 
   const handleStudentLogin = () => {
-    window.location.href = "http://localhost:5000/auth/google";
+    window.location.href = "/auth/google";
   };
 
   const handleAdminLogin = async (e) => {
@@ -34,7 +34,7 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/auth/admin/login", {
+      const response = await fetch("/auth/admin/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

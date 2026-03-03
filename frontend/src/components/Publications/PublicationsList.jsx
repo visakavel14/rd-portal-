@@ -291,7 +291,7 @@ const PublicationsList = () => {
                     <td>
                       {pub.proofFileId ? (
                         <a
-                          href={`http://localhost:5000/api/files/${pub.proofFileId}`}
+                          href={`/api/files/${pub.proofFileId}`}
                           target="_blank"
                           rel="noreferrer"
                           style={{

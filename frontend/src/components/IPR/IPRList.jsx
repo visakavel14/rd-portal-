@@ -251,7 +251,7 @@ const IPRList = () => {
                     <td>
                       {ipr.proofFileId ? (
                         <a
-                          href={`http://localhost:5000/api/files/${ipr.proofFileId}`}
+                          href={`/api/files/${ipr.proofFileId}`}
                           target="_blank"
                           rel="noreferrer"
                           style={{ display: "inline-flex", alignItems: "center", gap: "4px", color: "#1b2a44" }}

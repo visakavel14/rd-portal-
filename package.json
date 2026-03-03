@@ -1,4 +1,9 @@
 {
+  "name": "rd-portal",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build"
+  },
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",

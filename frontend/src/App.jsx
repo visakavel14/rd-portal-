@@ -114,8 +114,8 @@ function AppContent() {
           <Route path="/ipr/utility-form" element={<ProtectedRoute><UtilityForm /></ProtectedRoute>} />
           <Route path="/ipr/list" element={<ProtectedRoute><IPRList /></ProtectedRoute>} />
 
-          <Route path="/phdscholars/form" element={<ProtectedRoute><ScholarForm /></ProtectedRoute>} />
-          <Route path="/phdscholars/list" element={<ProtectedRoute><ScholarList /></ProtectedRoute>} />
+          <Route path="/PhdScholars/form" element={<ProtectedRoute><ScholarForm /></ProtectedRoute>} />
+          <Route path="/PhdScholars/list" element={<ProtectedRoute><ScholarList /></ProtectedRoute>} />
 
           <Route path="/proposals/form" element={<ProtectedRoute><ProjectProposalForm /></ProtectedRoute>} />
           <Route path="/proposals/list" element={<ProtectedRoute><ProposalList /></ProtectedRoute>} />

@@ -16,7 +16,10 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({
+  origin: [process.env.FRONTEND_URL, "http://localhost:3000", "http://localhost:5173"].filter(Boolean),
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -40,7 +43,7 @@ app.use(passport.initialize());
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: "/auth/google/callback"
+  callbackURL: process.env.GOOGLE_CALLBACK_URL || "/auth/google/callback"
 }, async (accessToken, refreshToken, profile, done) => {
   try {
     const email = profile.emails[0]?.value?.toLowerCase?.() || "";
@@ -83,11 +86,11 @@ app.get(
 );
 
 app.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: 'http://localhost:3000/login', session: false }),
+  passport.authenticate('google', { failureRedirect: `${process.env.FRONTEND_URL}/login`, session: false }),
   (req, res) => {
     const token = jwt.sign({ id: req.user._id, role: req.user.role }, process.env.JWT_SECRET || "fallback");
-    res.cookie('token', token, { httpOnly: true, secure: false });
-    res.redirect('http://localhost:3000/profile');
+    res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
+    res.redirect(`${process.env.FRONTEND_URL}/profile`);
   }
 );
 
